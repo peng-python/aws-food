@@ -1,0 +1,218 @@
+{% extends 'content_base.html' %}
+
+
+{% block content %}
+    <!--content-->
+    <div class="blog">
+        <div class="container">
+
+            <div class="col-md-9 ">
+                <!--content-->
+                <div class="single">
+
+                    <div class="single-top">
+                        <img class="img-responsive wow fadeInUp animated" data-wow-delay=".5s"
+                             src="{{ MEDIA_URL }}{{ blog.image }}" alt=""/>
+                        <div class="lone-line">
+                            <h4>{{ blog.title }}</h4>
+                            <ul class="grid-blog">
+                                <li><span><i class="glyphicon glyphicon-time"> </i>{{ blog.add_time }}</span></li>
+{#                                <li><a href="#"><i class="glyphicon glyphicon-comment"> </i>5 Comment</a></li>#}
+{#                                <li><a href="#"><i class="glyphicon glyphicon-share"> </i>Share</a></li>#}
+                            </ul>
+                            <p class="wow fadeInLeft animated" data-wow-delay=".5s"><span>{% autoescape off %}
+                                {{ blog.content }} {% endautoescape %} </span></p>
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <h3>评论内容</h3>
+
+                        {% for comment in comments %}
+                        <div class="media wow fadeInLeft animated" data-wow-delay=".5s">
+                            <div class="code-in">
+                                <p class="smith"><a href="#">{{ comment.user.nick_name }}</a> <span>{{ comment.add_time }}</span></p>
+{#                                <p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>#}
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="media-left">
+                                <a href="#">
+                                    <img src="/static/images/1.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="media-body">
+
+                                <p>{{ comment.comment }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+{#                        <div class="media wow fadeInUp animated" data-wow-delay=".5s">#}
+{#                            <div class="code-in">#}
+{#                                <p class="smith"><a href="#"> Rackham</a> <span>02 June 2014, 15:20</span></p>#}
+{#                                <p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>#}
+{#                                <div class="clearfix"></div>#}
+{#                            </div>#}
+{#                            <div class="media-left">#}
+{#                                <a href="#">#}
+{#                                    <img src="/static/images/si.jpg" alt="">#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="media-body">#}
+{##}
+{#                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante#}
+{#                                    sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra#}
+{#                                    turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue#}
+{#                                    felis in faucibus.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="media wow fadeInRight animated" data-wow-delay=".5s">#}
+{#                            <div class="code-in">#}
+{#                                <p class="smith"><a href="#">Clara</a> <span>02 June 2014, 15:20</span></p>#}
+{#                                <p class="reply"><a href="#"><i class="glyphicon glyphicon-repeat"> </i>REPLY</a></p>#}
+{#                                <div class="clearfix"></div>#}
+{#                            </div>#}
+{#                            <div class="media-left">#}
+{#                                <a href="#">#}
+{#                                    <img src="/static/images/si2.jpg" alt="">#}
+{#                                </a>#}
+{#                            </div>#}
+{#                            <div class="media-body">#}
+{##}
+{#                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante#}
+{#                                    sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra#}
+{#                                    turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue#}
+{#                                    felis in faucibus.</p>#}
+{#                            </div>#}
+{#                        </div>#}
+
+                    </div>
+                    <div class="leave">
+                        <h3>留下您的足迹</h3>
+{#                        {% if request.user.is_authenticated %}#}
+{#                            <h3 class="text-muted"></h3>#}
+{#                            <p>#}
+{#                                您好：{{ request.user.username }},欢迎评论#}
+{#                            </p>#}
+{#                        {% else %}#}
+{#                            <h3 class="text-muted">评论前必须登录！</h3>#}
+{#                            <p>#}
+{#                                <a href="{% url 'users:login' %}" class="btn btn-primary login" rel="nofollow">立即登录</a> &nbsp;#}
+{#                                <a href="{% url 'users:register' %}" class="btn btn-default register" rel="nofollow">注册</a>#}
+{#                            </p>#}
+{#                    {% endif %}#}
+
+                        <form method="post" id="js-pub-comment" enctype="multipart/form-data">
+                            <div class="single-grid wow fadeInLeft animated" data-wow-delay=".5s">
+
+{#                                <input type="text" value="Name" onfocus="this.value='';"#}
+{#                                       onblur="if (this.value == '') {this.value = 'Name';}">#}
+{##}
+{#                                <input type="text" value="E-mail" onfocus="this.value='';"#}
+{#                                       onblur="if (this.value == '') {this.value = 'E-mail';}">#}
+{##}
+{##}
+{#                                <input type="text" value="Web site" onfocus="this.value='';"#}
+{#                                       onblur="if (this.value == '') {this.value = 'Web site';}">#}
+
+{#                                <textarea value=" " onfocus="this.value='';"#}
+{#                                          onblur="if (this.value == '') {this.value = 'Comment';}">Comment</textarea>#}
+                                <textarea placeholder="" name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="1" ></textarea>
+                                <div class="hvr-rectangle-out">
+{#                                    <input type="submit" value="Send">#}
+                                    <button type="submit" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button>
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+
+                </div>
+                <!---->
+                <!--//content-->
+
+            </div>
+
+            <div class="col-md-3 categories-grid">
+{#                <div class="search-in animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">#}
+{#                    <h4>Search</h4>#}
+{#                    <div class="search">#}
+{#                        <form>#}
+{#                            <input type="text" placeholder="Search" required="">#}
+{#                            <input type="submit" value="">#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="grid-categories animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">#}
+{#                    <h4>Categories</h4>#}
+{#                    <ul class="popular">#}
+{#                        <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Breakfast</a></li>#}
+{#                        <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Lunch</a></li>#}
+{#                        <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dinner</a></li>#}
+{#                        <li><a href="#"><i class="glyphicon glyphicon-menu-right"> </i>Dessert</a></li>#}
+{##}
+{#                    </ul>#}
+{#                </div>#}
+                <div class="blog-bottom animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+                    <h4>最新文章</h4>
+                    {% for new_blog in new_blogs %}
+                    <div class="product-go">
+                        <a href="single.html" class="fashion"><img class="img-responsive " src="{{ MEDIA_URL }}{{ new_blog.title_image }}"
+                                                                   alt=""></a>
+                        <div class="grid-product">
+                            <a href="single.html" class="elit">{{ new_blog.title }}</a>
+                            <p>{% autoescape off %}{{ new_blog.content | truncatechars_html:"25" }}{% endautoescape %}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    {% endfor %}
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--//content-->
+{% endblock content %}
+{% block endjs %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {#alert('1111');#}
+            $('#js-pub-comment').submit(function () {
+                var comment = $("#comment-textarea").val()
+                if (comment == "") {
+                    alert('评论不能为空')
+                    return
+                }
+                $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: '{% url 'foods:comment' %}',
+                        data: {'blog_id':{{ blog.id }}, 'comment': comment},
+                        async: true,
+                        beforeSend: function (xhr, settings) {
+                            xhr.setRequestHeader("X-CSRFToken","{{ csrf_token }}");
+                        },
+                        success: function (data) {
+                            if (data.status == 'fail') {
+                                if (data.msg == '用户未登录') {
+                                    alert('您必须登录后才能进行评论');
+                                    window.location.href = "/users/login/";
+                                }
+                                else {
+                                    alert(data.msg)
+                                }
+                            }
+                            else if (data.status == 'success') {
+                                alert('22222');
+                                window.location.reload();
+                            }
+                        }
+                    }
+                )
+
+            })
+
+        })
+    </script>
+{% endblock endjs %}
